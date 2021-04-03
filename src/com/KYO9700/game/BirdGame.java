@@ -145,6 +145,8 @@ public class BirdGame extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //显示窗口
         frame.setVisible(true);
+        //调用开始游戏的方法
+        game.action();
     }
 
     // 开始游戏的方法
