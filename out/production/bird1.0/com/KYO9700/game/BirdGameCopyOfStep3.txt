@@ -4,24 +4,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-//鼠标单击事件监听器需要的包
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  * 游戏界面
  */
 //1 创建游戏面板
 
-//java.lang.Object
-// java.awt.Component
-//  java.awt.Container
-//   javax.swing.JComponent
-//    javax.swing.JPanel
-//JPanel是一个通用的轻量级容器。
-//public class JPanel extends JComponent implements Accessible
-public class BirdGame extends JPanel {
+public class BirdGameCopyOfStep3 extends JPanel {
 
     // 背景图片
     static BufferedImage background;
@@ -50,7 +39,7 @@ public class BirdGame extends JPanel {
     /**
      * 初始化游戏
      */
-    public BirdGame() throws Exception {
+    public BirdGameCopyOfStep3() throws Exception {
         // 初始化背景图片
         //java.lang.Object
         // javax.imageio.ImageIO
@@ -136,7 +125,7 @@ public class BirdGame extends JPanel {
         //将子组件添加到框架中，frame.add(child); 子组件将被添加到contentPane
         //将指定的组件附加到此容器的末尾。
         //该方法更改布局相关信息，因此使组件层次结构无效。 如果容器已经被显示，则此后必须验证层次结构，以显示添加的组件。
-        BirdGame game = new BirdGame();
+        BirdGameCopyOfStep3 game = new BirdGameCopyOfStep3();
         frame.add(game);
         //调整此组件的大小，使其宽度为width ，高度为height 。
         //该方法更改布局相关信息，因此使组件层次结构无效。
@@ -156,81 +145,6 @@ public class BirdGame extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //显示窗口
         frame.setVisible(true);
-        //调用开始游戏的方法
-        game.action();
-    }
-
-    // 开始游戏的方法
-    public void action() throws Exception {
-        // 鼠标监听器
-        MouseListener l = new MouseAdapter() {
-            // 鼠标按下事件
-            public void mousePressed(MouseEvent e) {
-                try {
-                    switch (state) {
-                        case START:
-                            // 在开始状态，按下鼠标则转为运行状态。
-                            state = RUNNING;
-                            break;
-                        case RUNNING:
-                            // 在运行状态，按下鼠标则小鸟向上飞行。
-                            bird.flappy();
-                            break;
-                        case GAME_OVER:
-                            // 在结束状态，按下鼠标则重置数据，再次转为开始态。
-                            column1 = new Column(1);
-                            column2 = new Column(2);
-                            bird = new Bird();
-                            score = 0;
-                            state = START;
-                            break;
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        };
-        // 将监听器添加到当前的面板上
-        addMouseListener(l);
-
-        // 不断的移动与重绘
-        while (true) {
-            switch (state) {
-                case START:
-                    // 小鸟做出飞行动作
-                    bird.fly();
-                    // 地面向左移动一步
-                    ground.step();
-                    break;
-                case RUNNING:
-                    // 地面向左移动一步
-                    ground.step();
-                    // 柱子向左移动一步
-                    column1.step();
-                    column2.step();
-                    // 小鸟做出飞行动作
-                    bird.fly();
-                    // 小鸟上下移动一步
-                    bird.step();
-                    // 计算分数
-                    if (bird.x == column1.x || bird.x == column2.x) {
-                        score++;
-                    }
-                    // 检测是否发生碰撞
-                    if (bird.hit(ground) || bird.hit(column1) || bird.hit(column2)) {
-                        state = GAME_OVER;
-                    }
-                    break;
-            }
-            // 调用repaint方法重新绘制界面
-            //public void repaint(long tm)重写组件。
-            //public void repaint()重新编辑这个组件。
-            //如果此组件是轻量级组件，则此方法将尽快调用此组件的paint方法。
-            //否则，该方法会尽快调用此组件的update方法。
-            repaint();
-            // 休眠 1000/60 毫秒
-            Thread.sleep(1000 / 60);
-        }
     }
 
 }
