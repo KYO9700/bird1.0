@@ -10,36 +10,15 @@ import java.awt.image.BufferedImage;
  */
 //1 创建游戏面板
 
-public class BirdGame extends JPanel {
+public class BirdGameCopyOfStep1 extends JPanel {
 
     // 背景图片
     static BufferedImage background;
-    // 开始图片
-    BufferedImage startImage;
-    // 结束图片
-    BufferedImage gameOverImage;
-
-    // 地面
-    Ground ground;
-    // 柱子
-    Column column1, column2;
-    // 小鸟
-    Bird bird;
-
-    // 游戏分数
-    int score;
-
-    // 游戏状态
-    int state;
-    // 状态常量
-    public static final int START = 0; //开始
-    public static final int RUNNING = 1; //运行
-    public static final int GAME_OVER = 2; //结束
 
     /**
      * 初始化游戏
      */
-    public BirdGame() throws Exception {
+    public BirdGameCopyOfStep1() throws Exception {
         // 初始化背景图片
         //java.lang.Object
         // javax.imageio.ImageIO
@@ -69,7 +48,7 @@ public class BirdGame extends JPanel {
         //将子组件添加到框架中，frame.add(child); 子组件将被添加到contentPane
         //将指定的组件附加到此容器的末尾。
         //该方法更改布局相关信息，因此使组件层次结构无效。 如果容器已经被显示，则此后必须验证层次结构，以显示添加的组件。
-        BirdGame game = new BirdGame();
+        BirdGameCopyOfStep1 game = new BirdGameCopyOfStep1();
         frame.add(game);
         //调整此组件的大小，使其宽度为width ，高度为height 。
         //该方法更改布局相关信息，因此使组件层次结构无效。
