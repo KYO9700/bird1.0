@@ -44,7 +44,21 @@ public class BirdGame extends JPanel {
         //java.lang.Object
         // javax.imageio.ImageIO
         background = ImageIO.read(getClass().getResource("/resources/bg.png"));
+        // 初始化开始、结束图片
+        startImage = ImageIO.read(getClass().getResource("/resources/start.png"));
+        gameOverImage = ImageIO.read(getClass().getResource("/resources/gameover.png"));
 
+        // 初始化地面、柱子、小鸟
+        ground = new Ground();
+        column1 = new Column(1);
+        column2 = new Column(2);
+        bird = new Bird();
+
+        // 初始化分数
+        score = 0;
+
+        // 初始化状态
+        state = START;
     }
 
     /**
