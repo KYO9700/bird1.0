@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 /**
  * 游戏界面
  */
+//1 创建游戏面板
 
 public class BirdGame extends JPanel {
 
@@ -19,7 +20,10 @@ public class BirdGame extends JPanel {
      */
     public BirdGame() throws Exception {
         // 初始化背景图片
+        //java.lang.Object
+        // javax.imageio.ImageIO
         background = ImageIO.read(getClass().getResource("/resources/bg.png"));
+
     }
 
     /**
@@ -32,6 +36,7 @@ public class BirdGame extends JPanel {
     public void paint(Graphics g) {
         // 绘制背景
         g.drawImage(background, 0, 0, null);
+
     }
 
     /**
