@@ -10,55 +10,20 @@ import java.awt.image.BufferedImage;
  */
 //1 创建游戏面板
 
-public class BirdGame extends JPanel {
+public class BirdGameCopyOfStep1 extends JPanel {
 
     // 背景图片
     static BufferedImage background;
-    // 开始图片
-    BufferedImage startImage;
-    // 结束图片
-    BufferedImage gameOverImage;
-
-    // 地面
-    Ground ground;
-    // 柱子
-    Column column1, column2;
-    // 小鸟
-    Bird bird;
-
-    // 游戏分数
-    int score;
-
-    // 游戏状态
-    int state;
-    // 状态常量
-    public static final int START = 0; //开始
-    public static final int RUNNING = 1; //运行
-    public static final int GAME_OVER = 2; //结束
 
     /**
      * 初始化游戏
      */
-    public BirdGame() throws Exception {
+    public BirdGameCopyOfStep1() throws Exception {
         // 初始化背景图片
         //java.lang.Object
         // javax.imageio.ImageIO
         background = ImageIO.read(getClass().getResource("/resources/bg.png"));
-        // 初始化开始、结束图片
-        startImage = ImageIO.read(getClass().getResource("/resources/start.png"));
-        gameOverImage = ImageIO.read(getClass().getResource("/resources/gameover.png"));
 
-        // 初始化地面、柱子、小鸟
-        ground = new Ground();
-        column1 = new Column(1);
-        column2 = new Column(2);
-        bird = new Bird();
-
-        // 初始化分数
-        score = 0;
-
-        // 初始化状态
-        state = START;
     }
 
     /**
@@ -72,48 +37,6 @@ public class BirdGame extends JPanel {
         // 绘制背景
         g.drawImage(background, 0, 0, null);
 
-        // 绘制地面
-        g.drawImage(ground.image, ground.x, ground.y, null);
-
-        // 绘制柱子
-        g.drawImage(column1.image, column1.x - column1.width / 2, column1.y
-                - column1.height / 2, null);
-        g.drawImage(column2.image, column2.x - column2.width / 2, column2.y
-                - column2.height / 2, null);
-
-        // 绘制小鸟（旋转坐标系）
-        //java.lang.Object
-        // java.awt.Graphics
-        //  java.awt.Graphics2D
-        //该Graphics2D类扩展了Graphics类，以提供对几何，坐标变换，颜色管理和文本布局的更复杂的控制。 这是在Java（tm）平台上呈现二维形状，文字和图像的基础类。
-        Graphics2D g2 = (Graphics2D) g;
-        //随后的渲染绕旋转中心以指定弧度旋转，画出的小鸟的旋转角度由bird对象的属性alpha确定
-        g2.rotate(-bird.alpha, bird.x, bird.y);
-        g.drawImage(bird.image,
-                bird.x - bird.width / 2, bird.y - bird.height / 2, null);
-        //将之前的渲染旋转角度恢复
-        g2.rotate(bird.alpha, bird.x, bird.y);
-
-        // 绘制分数
-        //java.lang.Object
-        // java.awt.Font
-        //Font类表示字体，用于以可见的方式呈现文本。 一种字体提供映射字符 字形的序列的序列和上呈现字形序列所需的信息Graphics个Component对象。
-        //从指定的名称，样式和点大小创建一个新的 Font
-        Font f = new Font(Font.SANS_SERIF, Font.BOLD, 40);//BOLD-大胆的风格常数。SANS_SERIF-逻辑字体“SansSerif”的规范系列名称的字符串常量。
-        g.setFont(f);
-        g.drawString("" + score, 40, 60);
-        g.setColor(Color.WHITE);
-        g.drawString("" + score, 40 - 3, 60 - 3);
-
-        // 绘制开始与结束界面
-        switch (state) {
-            case START:
-                g.drawImage(startImage, 0, 0, null);
-                break;
-            case GAME_OVER:
-                g.drawImage(gameOverImage, 0, 0, null);
-                break;
-        }
     }
 
     /**
@@ -125,7 +48,7 @@ public class BirdGame extends JPanel {
         //将子组件添加到框架中，frame.add(child); 子组件将被添加到contentPane
         //将指定的组件附加到此容器的末尾。
         //该方法更改布局相关信息，因此使组件层次结构无效。 如果容器已经被显示，则此后必须验证层次结构，以显示添加的组件。
-        BirdGame game = new BirdGame();
+        BirdGameCopyOfStep1 game = new BirdGameCopyOfStep1();
         frame.add(game);
         //调整此组件的大小，使其宽度为width ，高度为height 。
         //该方法更改布局相关信息，因此使组件层次结构无效。
