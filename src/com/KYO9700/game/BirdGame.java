@@ -163,8 +163,11 @@ public class BirdGame extends JPanel {
     // 开始游戏的方法
     public void action() throws Exception {
         // 鼠标监听器
+        // 适配器类已经实现相应接口，MouseAdapter类实现了MouseListener接口，
+        // 因此可以使用MouseAdapter的子类创建的对象做监视器，只需重写需要的接口方法即可。
         MouseListener l = new MouseAdapter() {
             // 鼠标按下事件
+            @Override
             public void mousePressed(MouseEvent e) {
                 try {
                     switch (state) {
